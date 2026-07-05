@@ -308,34 +308,49 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--grey);font-si
 .gate-card p{font-size:.8rem;color:var(--grey);margin-bottom:18px}
 .gate-err{color:#e5735d;font-size:.78rem;margin-top:10px;min-height:1em}
 
-.admin{position:fixed;inset:0;z-index:120;display:none;background:var(--bg);overflow:auto}
-.admin.open{display:block}
-.admin-top{position:sticky;top:0;background:rgba(13,10,7,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:13px 0;z-index:6}
-.admin-top .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.admin-top h2{font-family:'Rajdhani';font-weight:700;text-transform:uppercase;font-size:1.4rem}
+.admin{position:fixed;inset:0;z-index:120;display:none;background:var(--bg)}
+.admin.open{display:flex}
+.admin-sidebar{width:260px;flex:none;background:linear-gradient(180deg,#150f08,var(--panel));border-right:1px solid var(--line);display:flex;flex-direction:column;height:100%}
+.admin-brand{padding:22px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px}
+.admin-brand svg{width:38px;flex:none}
+.admin-brand .tt{font-family:'Rajdhani';font-weight:700;text-transform:uppercase;font-size:1.05rem;line-height:1.1}
+.admin-brand .ss{font-size:.6rem;color:var(--grey);letter-spacing:.12em;text-transform:uppercase}
+.admin-nav{flex:1;overflow-y:auto;padding:14px 12px}
+.admin-nav button{width:100%;display:flex;align-items:center;gap:12px;text-align:left;border:none;background:none;color:var(--grey);font-family:'Inter';font-weight:600;font-size:.88rem;padding:12px 14px;border-radius:11px;cursor:pointer;transition:.2s;margin-bottom:4px}
+.admin-nav button svg{flex:none;opacity:.75;transition:.2s}
+.admin-nav button:hover{background:rgba(255,122,26,.08);color:var(--cream)}
+.admin-nav button.active{background:linear-gradient(135deg,rgba(255,122,26,.18),rgba(232,180,76,.1));color:var(--orange-hi);box-shadow:inset 3px 0 0 var(--orange)}
+.admin-nav button.active svg{opacity:1}
+.admin-foot{padding:16px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.admin-main{flex:1;overflow-y:auto;height:100%}
+.admin-header{position:sticky;top:0;background:rgba(13,10,7,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:20px 32px;z-index:6;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.admin-header h2{font-family:'Rajdhani';font-weight:700;text-transform:uppercase;font-size:1.7rem}
+.admin-header p{font-size:.8rem;color:var(--grey);margin-top:2px}
+.admin-body{padding:28px 32px 80px}
 .demo-note{font-size:.64rem;color:var(--gold);border:1px solid rgba(232,180,76,.4);padding:4px 10px;border-radius:100px;background:rgba(232,180,76,.07)}
-.admin-tabs{display:flex;gap:8px;margin:20px 0 4px;flex-wrap:wrap}
-.admin-tabs button{border:1px solid var(--line);background:var(--panel);color:var(--grey);font-weight:600;font-size:.82rem;padding:9px 16px;border-radius:100px;cursor:pointer;transition:.2s;font-family:'Inter'}
-.admin-tabs button.active{background:linear-gradient(135deg,var(--orange-hi),var(--orange));color:#1b0e02;border-color:transparent}
-.admin-pane{display:none;padding:20px 0 70px}
+.mobile-nav-toggle{display:none}
+.admin-pane{display:none;animation:fadeUp .35s ease}
 .admin-pane.active{display:block}
-.admin-grid{display:grid;grid-template-columns:360px 1fr;gap:24px;align-items:start}
-.form-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:20px}
-.form-card h3{font-family:'Rajdhani';font-weight:700;text-transform:uppercase;font-size:1.2rem;margin-bottom:14px}
-.admin-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:15px}
-.arow{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.admin-grid{display:grid;grid-template-columns:380px 1fr;gap:26px;align-items:start}
+.form-card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 8px 30px -18px rgba(0,0,0,.6)}
+.form-card .fc-head{display:flex;align-items:center;gap:10px;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.form-card .fc-head .ic{width:38px;height:38px;border-radius:10px;background:rgba(255,122,26,.14);color:var(--orange);display:grid;place-items:center;flex:none}
+.form-card h3{font-family:'Rajdhani';font-weight:700;text-transform:uppercase;font-size:1.25rem}
+.admin-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:16px}
+.arow{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,border-color .25s}
+.arow:hover{transform:translateY(-3px);border-color:rgba(255,122,26,.3)}
 .arow .thumb{aspect-ratio:16/9;position:relative;overflow:hidden;background:linear-gradient(145deg,#20180c,#120d07)}
 .arow .thumb img,.arow .thumb .ph{position:absolute;inset:0;width:100%;height:100%}
 .arow .thumb img{object-fit:cover}
-.arow .ab{padding:13px 15px;display:flex;flex-direction:column;gap:4px;flex:1}
-.arow h4{font-family:'Rajdhani';font-weight:700;font-size:1.05rem;text-transform:uppercase}
+.arow .ab{padding:15px 16px;display:flex;flex-direction:column;gap:4px;flex:1}
+.arow h4{font-family:'Rajdhani';font-weight:700;font-size:1.1rem;text-transform:uppercase}
 .arow .meta{font-family:'Space Mono';font-size:.68rem;color:var(--grey)}
-.arow .p{font-family:'Rajdhani';font-weight:700;font-size:1.25rem;color:var(--orange-hi)}
-.acts{display:flex;gap:8px;margin-top:auto;padding-top:10px;flex-wrap:wrap}
-.mini{flex:1;min-width:80px;font-size:.72rem;padding:8px;border-radius:9px;border:1px solid var(--line);background:var(--bg);color:var(--cream);cursor:pointer;transition:.2s;font-family:'Inter'}
+.arow .p{font-family:'Rajdhani';font-weight:700;font-size:1.3rem;color:var(--orange-hi)}
+.acts{display:flex;gap:8px;margin-top:auto;padding-top:12px;flex-wrap:wrap}
+.mini{flex:1;min-width:80px;font-size:.72rem;padding:9px;border-radius:9px;border:1px solid var(--line);background:var(--bg);color:var(--cream);cursor:pointer;transition:.2s;font-family:'Inter';font-weight:600}
 .mini:hover{border-color:var(--orange);color:var(--orange-hi)}
 .mini.del:hover{border-color:#c0402c;color:#e5735d}
-.trow{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:flex;flex-direction:column;gap:8px}
+.trow{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:9px}
 .trow p{font-size:.88rem}
 .trow .meta{font-size:.72rem;color:var(--grey)}
 .settings-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 16px}
@@ -351,12 +366,38 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--grey);font-si
   .nav-links{position:fixed;top:60px;left:0;right:0;flex-direction:column;background:rgba(13,10,7,.98);padding:24px;gap:18px;border-bottom:1px solid var(--line);transform:translateY(-140%);transition:transform .35s;z-index:75;align-items:stretch;text-align:center}
   .nav-links.open{transform:none}
   .nav-toggle{display:block}
+  .admin-sidebar{position:fixed;top:0;bottom:0;left:0;transform:translateX(-100%);transition:transform .3s;z-index:10;box-shadow:20px 0 40px rgba(0,0,0,.4)}
+  .admin-sidebar.open{transform:none}
+  .mobile-nav-toggle{display:flex;align-items:center;gap:8px}
+  .admin-header{padding:16px 18px}
+  .admin-body{padding:20px 18px 70px}
+  .offer-section-grid{grid-template-columns:1fr!important}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}
   .reveal,.intro h1 .row span,.intro .sub,.intro .intro-cta,.intro-bike{opacity:1;transform:none}
   .intro-bike{transform:translateX(-50%)}
 }
+
+/* ============ OFFER BANNER + SECTION ============ */
+.offer-banner{background:linear-gradient(90deg,var(--orange),var(--gold));color:#1b0e02;overflow:hidden;position:relative;display:none}
+.offer-banner.show{display:block}
+.offer-banner-in{display:flex;align-items:center;justify-content:center;gap:10px;padding:9px 40px 9px 16px;font-weight:700;font-size:.86rem;text-align:center;position:relative}
+.offer-banner-in span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:80vw}
+.offer-banner-close{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.15);border:none;color:#1b0e02;width:22px;height:22px;border-radius:50%;cursor:pointer;font-size:.8rem;line-height:1}
+.offer-section{display:none}
+.offer-section.show{display:block}
+.offer-section-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:0;border-radius:20px;overflow:hidden;border:1px solid rgba(255,122,26,.35);background:linear-gradient(150deg,#241a0d,var(--panel))}
+.offer-img{position:relative;min-height:220px;background:linear-gradient(145deg,#20180c,#120d07)}
+.offer-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.offer-text{padding:clamp(24px,4vw,40px);display:flex;flex-direction:column;justify-content:center}
+.offer-text .tag{position:static;display:inline-block;margin-bottom:14px;background:var(--orange);color:#1b0e02;font-family:'Space Mono';font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:5px 12px;border-radius:7px;width:fit-content}
+.offer-text h3{font-family:'Rajdhani';font-weight:700;text-transform:uppercase;font-size:clamp(1.6rem,4vw,2.4rem);line-height:1.05;margin-bottom:12px}
+.offer-text p{color:var(--grey);font-size:.95rem;margin-bottom:22px}
+
+/* ============ CUSTOM "OTHER" INPUT TOGGLE ============ */
+.custom-reveal{display:none;margin-top:8px}
+.custom-reveal.show{display:block}
 </style>
 </head>
 <body>
@@ -474,6 +515,14 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--grey);font-si
   </div>
 </header>
 
+<!-- OFFER BANNER (shows automatically when an active offer exists) -->
+<div class="offer-banner" id="offerBanner">
+  <div class="offer-banner-in">
+    <span id="offerBannerText"></span>
+    <button class="offer-banner-close" onclick="dismissOfferBanner()" aria-label="Dismiss">✕</button>
+  </div>
+</div>
+
 <!-- ============ CINEMATIC INTRO ============ -->
 <div id="top"></div>
 <section class="intro" style="padding-top:110px">
@@ -512,6 +561,22 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--grey);font-si
 </div></div>
 
 <!-- ============ STOCK ============ -->
+
+<!-- CURRENT OFFER (dedicated section, only shows when admin has an active offer) -->
+<section class="offer-section" id="offerSection" style="padding-top:40px;padding-bottom:10px">
+  <div class="wrap">
+    <div class="offer-section-grid reveal in">
+      <div class="offer-img"><img id="offerImg" alt="Current offer"/></div>
+      <div class="offer-text">
+        <span class="tag">Limited Time Offer</span>
+        <h3 id="offerTitle"></h3>
+        <p id="offerDesc"></p>
+        <a href="#" data-wa="Hi Shams Motors, I saw your current offer and I'm interested!" target="_blank" class="btn btn-orange" style="width:fit-content">Ask About This Offer</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="stock">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -650,154 +715,235 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--grey);font-si
 
 <!-- ADMIN PANEL -->
 <div class="admin" id="admin">
-  <div class="admin-top">
-    <div class="wrap">
-      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
-        <h2>Admin Panel</h2>
-        <span class="demo-note">Demo — changes live until refresh · Supabase makes it permanent</span>
+  <div class="admin-sidebar" id="adminSidebar">
+    <div class="admin-brand">
+      <svg viewBox="0 0 270 140"><use href="#sbike"/></svg>
+      <div>
+        <div class="tt">Shams Motors</div>
+        <div class="ss">Admin Dashboard</div>
       </div>
-      <div style="display:flex;gap:10px">
-        <button class="btn btn-ghost" onclick="adminLogout()">Log out</button>
-        <button class="btn btn-ghost" onclick="closeAdmin()">Close ✕</button>
-      </div>
+    </div>
+    <div class="admin-nav">
+      <button class="active" data-pane="bikes" onclick="adminTab(this)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6h4l2 6"/><path d="M2 17.5h3m4.5-9.5L9 12l4 5h4"/></svg>
+        Bikes
+      </button>
+      <button data-pane="offers" onclick="adminTab(this)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41 11 3.83A2 2 0 0 0 9.59 3.24L4 3a1 1 0 0 0-1 1l.24 5.59a2 2 0 0 0 .59 1.41l9.58 9.59a2 2 0 0 0 2.83 0l4.35-4.35a2 2 0 0 0 0-2.83Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>
+        Offers
+      </button>
+      <button data-pane="testis" onclick="adminTab(this)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15 9 22 9.3 16.5 14 18.2 21 12 17.3 5.8 21 7.5 14 2 9.3 9 9"/></svg>
+        Testimonials
+      </button>
+      <button data-pane="content" onclick="adminTab(this)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>
+        Website Text
+      </button>
+      <button data-pane="settings" onclick="adminTab(this)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Contact &amp; Settings
+      </button>
+      <button data-pane="analytics" onclick="adminTab(this)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18.7 8 13 13.7l-3-3L5.3 16.4"/></svg>
+        Visitors
+      </button>
+    </div>
+    <div class="admin-foot">
+      <span class="demo-note" style="text-align:center">Live on Supabase</span>
+      <button class="btn btn-ghost" onclick="adminLogout()">Log out</button>
     </div>
   </div>
-  <div class="wrap">
-    <div class="admin-tabs">
-      <button class="active" data-pane="bikes" onclick="adminTab(this)">🏍 Bikes</button>
-      <button data-pane="testis" onclick="adminTab(this)">⭐ Testimonials</button>
-      <button data-pane="content" onclick="adminTab(this)">📝 Website Text</button>
-      <button data-pane="settings" onclick="adminTab(this)">⚙ Contact &amp; Settings</button>
-      <button data-pane="analytics" onclick="adminTab(this)">📊 Visitors</button>
+
+  <div class="admin-main">
+    <div class="admin-header">
+      <div style="display:flex;align-items:center;gap:12px">
+        <button class="mobile-nav-toggle btn btn-ghost" onclick="toggleAdminSidebar()" style="padding:8px 12px">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div>
+          <h2 id="adminPaneTitle">Bikes</h2>
+          <p id="adminPaneSub">Manage your showroom inventory</p>
+        </div>
+      </div>
+      <button class="btn btn-ghost" onclick="closeAdmin()">Close ✕</button>
     </div>
 
-    <!-- BIKES -->
-    <div class="admin-pane active" id="pane-bikes">
-      <div class="admin-grid">
-        <div class="form-card">
-          <h3 id="formTitle">Add a bike</h3>
-          <div class="field"><label>Bike name / model</label><input id="f-name" placeholder="e.g. Classic 350 Halcyon"/></div>
-          <div class="field-row">
-            <div class="field"><label>Brand</label><select id="f-brand"><option>Royal Enfield</option><option>KTM</option><option>Yamaha</option><option>Honda</option><option>Bajaj</option><option>TVS</option><option>Hero</option><option>Suzuki</option><option>Jawa</option><option>Other</option></select></div>
-            <div class="field"><label>Year</label><input id="f-year" type="number" placeholder="2023"/></div>
-          </div>
-          <div class="field-row">
-            <div class="field"><label>Engine (cc)</label><input id="f-cc" type="number" placeholder="349"/></div>
-            <div class="field"><label>KM run</label><input id="f-km" type="number" placeholder="0"/></div>
-          </div>
-          <div class="field-row">
-            <div class="field"><label>Owners</label><select id="f-owners"><option value="0">New (0)</option><option value="1">1st owner</option><option value="2">2nd owner</option><option value="3">3rd+ owner</option></select></div>
-            <div class="field"><label>Fuel</label><select id="f-fuel"><option>Petrol</option><option>Electric</option></select></div>
-          </div>
-          <div class="field-row">
-            <div class="field"><label>Colour</label><input id="f-color" placeholder="e.g. Stealth Black"/></div>
-            <div class="field"><label>Reg. (RTO)</label><input id="f-reg" placeholder="e.g. MH-04"/></div>
-          </div>
-          <div class="field-row">
-            <div class="field"><label>Price (₹)</label><input id="f-price" type="number" placeholder="180000"/></div>
-            <div class="field"><label>Condition</label><select id="f-cond"><option value="new">New</option><option value="used">Used</option></select></div>
-          </div>
-          <div class="field"><label>Status</label><select id="f-status"><option value="available">Available</option><option value="sold">Sold</option></select></div>
-          <div class="field">
-            <label>Photos <span style="color:#e5735d">*required, at least 1</span></label>
-            <div class="photo-manager" id="photoManager">
-              <label style="font-size:.7rem;color:var(--grey);letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:6px">Upload from device</label>
-              <input type="file" id="f-photos-file" accept="image/*" multiple onchange="onPhotoFilesChosen(this)"/>
-              <p style="font-size:.68rem;color:var(--grey);margin:10px 0 4px">— or paste image URLs —</p>
-              <textarea id="f-photos-input" placeholder="Paste one image URL per line…" style="min-height:56px"></textarea>
-              <button type="button" class="btn btn-ghost" style="width:100%;margin-top:8px" onclick="addPhotosFromInput()">+ Add photo(s)</button>
-              <div class="photo-list" id="photoList"></div>
-              <div class="req">At least one photo is required before you can save this bike.</div>
+    <div class="admin-body">
+      <!-- BIKES -->
+      <div class="admin-pane active" id="pane-bikes">
+        <div class="admin-grid">
+          <div class="form-card">
+            <div class="fc-head">
+              <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6h4l2 6"/></svg></div>
+              <h3 id="formTitle">Add a bike</h3>
             </div>
+            <div class="field"><label>Bike name / model</label><input id="f-name" placeholder="e.g. Classic 350 Halcyon"/></div>
+            <div class="field-row">
+              <div class="field">
+                <label>Brand</label>
+                <select id="f-brand" onchange="toggleCustom('f-brand','f-brand-custom')">
+                  <option>Royal Enfield</option><option>KTM</option><option>Yamaha</option><option>Honda</option><option>Bajaj</option><option>TVS</option><option>Hero</option><option>Suzuki</option><option>Jawa</option><option value="__custom__">+ Add new brand…</option>
+                </select>
+                <div class="custom-reveal" id="f-brand-custom-wrap"><input id="f-brand-custom" placeholder="Type new brand name"/></div>
+              </div>
+              <div class="field"><label>Year</label><input id="f-year" type="number" placeholder="2023"/></div>
+            </div>
+            <div class="field-row">
+              <div class="field"><label>Engine (cc)</label><input id="f-cc" type="number" placeholder="349"/></div>
+              <div class="field"><label>KM run</label><input id="f-km" type="number" placeholder="0"/></div>
+            </div>
+            <div class="field-row">
+              <div class="field"><label>Owners</label><select id="f-owners"><option value="0">New (0)</option><option value="1">1st owner</option><option value="2">2nd owner</option><option value="3">3rd+ owner</option></select></div>
+              <div class="field">
+                <label>Fuel</label>
+                <select id="f-fuel" onchange="toggleCustom('f-fuel','f-fuel-custom')">
+                  <option>Petrol</option><option>Electric</option><option>Diesel</option><option value="__custom__">+ Add new…</option>
+                </select>
+                <div class="custom-reveal" id="f-fuel-custom-wrap"><input id="f-fuel-custom" placeholder="Type fuel type"/></div>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field"><label>Colour</label><input id="f-color" placeholder="e.g. Stealth Black"/></div>
+              <div class="field"><label>Reg. (RTO)</label><input id="f-reg" placeholder="e.g. MH-04"/></div>
+            </div>
+            <div class="field-row">
+              <div class="field"><label>Price (₹)</label><input id="f-price" type="number" placeholder="180000"/></div>
+              <div class="field"><label>Condition</label><select id="f-cond"><option value="new">New</option><option value="used">Used</option></select></div>
+            </div>
+            <div class="field"><label>Status</label><select id="f-status"><option value="available">Available</option><option value="sold">Sold</option></select></div>
+            <div class="field">
+              <label>Photos <span style="color:#e5735d">*required, at least 1</span></label>
+              <div class="photo-manager" id="photoManager">
+                <label style="font-size:.7rem;color:var(--grey);letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:6px">Upload from device</label>
+                <input type="file" id="f-photos-file" accept="image/*" multiple onchange="onPhotoFilesChosen(this)"/>
+                <p style="font-size:.68rem;color:var(--grey);margin:10px 0 4px">— or paste image URLs —</p>
+                <textarea id="f-photos-input" placeholder="Paste one image URL per line…" style="min-height:56px"></textarea>
+                <button type="button" class="btn btn-ghost" style="width:100%;margin-top:8px" onclick="addPhotosFromInput()">+ Add photo(s)</button>
+                <div class="photo-list" id="photoList"></div>
+                <div class="req">At least one photo is required before you can save this bike.</div>
+              </div>
+            </div>
+            <div class="field"><label>Description</label><textarea id="f-desc" placeholder="Condition notes, service history, highlights…"></textarea></div>
+            <button class="btn btn-orange" style="width:100%" onclick="saveBike()">Save bike</button>
+            <button class="btn btn-ghost" style="width:100%;margin-top:8px" onclick="resetForm()" id="cancelEdit" hidden>Cancel edit</button>
           </div>
-          <div class="field"><label>Description</label><textarea id="f-desc" placeholder="Condition notes, service history, highlights…"></textarea></div>
-          <button class="btn btn-orange" style="width:100%" onclick="saveBike()">Save bike</button>
-          <button class="btn btn-ghost" style="width:100%;margin-top:8px" onclick="resetForm()" id="cancelEdit" hidden>Cancel edit</button>
+          <div class="admin-list" id="adminList"></div>
         </div>
-        <div class="admin-list" id="adminList"></div>
       </div>
-    </div>
 
-    <!-- TESTIMONIALS -->
-    <div class="admin-pane" id="pane-testis">
-      <div class="admin-grid">
-        <div class="form-card">
-          <h3 id="tFormTitle">Add testimonial</h3>
-          <div class="field"><label>Customer name</label><input id="t-name" placeholder="e.g. Aamir Shaikh"/></div>
-          <div class="field"><label>Bike purchased</label><input id="t-bike" placeholder="e.g. KTM Duke 390"/></div>
-          <div class="field"><label>Rating (1–5)</label><select id="t-stars"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></div>
-          <div class="field"><label>Their words</label><textarea id="t-text" placeholder="What did they say?"></textarea></div>
-          <button class="btn btn-orange" style="width:100%" onclick="saveTesti()">Save testimonial</button>
-          <button class="btn btn-ghost" style="width:100%;margin-top:8px" onclick="resetTForm()" id="tCancelEdit" hidden>Cancel edit</button>
+      <!-- OFFERS -->
+      <div class="admin-pane" id="pane-offers">
+        <div class="admin-grid">
+          <div class="form-card">
+            <div class="fc-head">
+              <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41 11 3.83A2 2 0 0 0 9.59 3.24L4 3a1 1 0 0 0-1 1l.24 5.59a2 2 0 0 0 .59 1.41l9.58 9.59a2 2 0 0 0 2.83 0l4.35-4.35a2 2 0 0 0 0-2.83Z"/></svg></div>
+              <h3 id="oFormTitle">Add an offer</h3>
+            </div>
+            <p style="font-size:.8rem;color:var(--grey);margin-bottom:16px">This shows as a banner strip on every page, plus a full section on your homepage — until you turn it off.</p>
+            <div class="field"><label>Offer title</label><input id="o-title" placeholder="e.g. Independence Day Sale — ₹5,000 Off"/></div>
+            <div class="field"><label>Description</label><textarea id="o-desc" placeholder="Details of the offer, validity dates, terms…"></textarea></div>
+            <div class="field">
+              <label>Offer image</label>
+              <div class="photo-manager" id="offerPhotoManager">
+                <input type="file" id="o-photo-file" accept="image/*" onchange="onOfferFileChosen(this)"/>
+                <p style="font-size:.68rem;color:var(--grey);margin:10px 0 4px">— or paste an image URL —</p>
+                <input id="o-photo-url" placeholder="https://…"/>
+                <div class="photo-list" id="offerPhotoPreview"></div>
+              </div>
+            </div>
+            <div class="field"><label>Status</label><select id="o-active"><option value="true">Active — show on site</option><option value="false">Inactive — hidden</option></select></div>
+            <button class="btn btn-orange" style="width:100%" onclick="saveOffer()">Save offer</button>
+            <button class="btn btn-ghost" style="width:100%;margin-top:8px" onclick="resetOfferForm()" id="oCancelEdit" hidden>Cancel edit</button>
+          </div>
+          <div class="admin-list" id="offerAdminList" style="grid-template-columns:1fr"></div>
         </div>
-        <div class="admin-list" id="testiAdminList" style="grid-template-columns:1fr"></div>
       </div>
-    </div>
 
-    <!-- WEBSITE TEXT -->
-    <div class="admin-pane" id="pane-content">
-      <div class="settings-sec">
-        <h3>Intro (first screen)</h3>
-        <div class="settings-grid">
-          <div class="field full"><label>Small top line</label><input id="w-eyebrow"/></div>
-          <div class="field"><label>Headline line 1 (cream)</label><input id="w-h1a"/></div>
-          <div class="field"><label>Headline line 2 (orange)</label><input id="w-h1b"/></div>
-          <div class="field full"><label>Sub text</label><textarea id="w-sub"></textarea></div>
+      <!-- TESTIMONIALS -->
+      <div class="admin-pane" id="pane-testis">
+        <div class="admin-grid">
+          <div class="form-card">
+            <div class="fc-head">
+              <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15 9 22 9.3 16.5 14 18.2 21 12 17.3 5.8 21 7.5 14 2 9.3 9 9"/></svg></div>
+              <h3 id="tFormTitle">Add testimonial</h3>
+            </div>
+            <div class="field"><label>Customer name</label><input id="t-name" placeholder="e.g. Aamir Shaikh"/></div>
+            <div class="field"><label>Bike purchased</label><input id="t-bike" placeholder="e.g. KTM Duke 390"/></div>
+            <div class="field"><label>Rating (1–5)</label><select id="t-stars"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></div>
+            <div class="field"><label>Their words</label><textarea id="t-text" placeholder="What did they say?"></textarea></div>
+            <button class="btn btn-orange" style="width:100%" onclick="saveTesti()">Save testimonial</button>
+            <button class="btn btn-ghost" style="width:100%;margin-top:8px" onclick="resetTForm()" id="tCancelEdit" hidden>Cancel edit</button>
+          </div>
+          <div class="admin-list" id="testiAdminList" style="grid-template-columns:1fr"></div>
         </div>
       </div>
-      <div class="settings-sec">
-        <h3>Stats numbers</h3>
-        <div class="settings-grid">
-          <div class="field"><label>Happy riders</label><input id="w-riders" type="number"/></div>
-          <div class="field"><label>Brands</label><input id="w-brands" type="number"/></div>
-        </div>
-        <p style="font-size:.74rem;color:var(--grey)">"Bikes in stock" counts automatically from your bike list.</p>
-      </div>
-      <div class="settings-sec">
-        <h3>Loan section</h3>
-        <div class="settings-grid">
-          <div class="field full"><label>Loan heading</label><input id="w-loanTitle"/></div>
-          <div class="field full"><label>Loan sub text</label><textarea id="w-loanSub"></textarea></div>
-          <div class="field full"><label>Loan points (one per line)</label><textarea id="w-loanPoints" style="min-height:110px"></textarea></div>
-          <div class="field"><label>Default interest rate (%)</label><input id="w-rate" type="number" step="0.5"/></div>
-        </div>
-      </div>
-      <button class="btn btn-orange" onclick="saveContent()">Save all text</button>
-    </div>
 
-    <!-- SETTINGS -->
-    <div class="admin-pane" id="pane-settings">
-      <div class="settings-sec">
-        <h3>Contact details</h3>
-        <div class="settings-grid">
-          <div class="field"><label>Phone (display)</label><input id="s-phone"/></div>
-          <div class="field"><label>WhatsApp number (digits with country code)</label><input id="s-wa" inputmode="numeric"/></div>
-          <div class="field full"><label>Address (also used for the map)</label><input id="s-address"/></div>
-          <div class="field"><label>Working hours</label><input id="s-hours"/></div>
-          <div class="field"><label>Proprietor</label><input id="s-owner"/></div>
+      <!-- WEBSITE TEXT -->
+      <div class="admin-pane" id="pane-content">
+        <div class="settings-sec">
+          <h3>Intro (first screen)</h3>
+          <div class="settings-grid">
+            <div class="field full"><label>Small top line</label><input id="w-eyebrow"/></div>
+            <div class="field"><label>Headline line 1 (cream)</label><input id="w-h1a"/></div>
+            <div class="field"><label>Headline line 2 (orange)</label><input id="w-h1b"/></div>
+            <div class="field full"><label>Sub text</label><textarea id="w-sub"></textarea></div>
+          </div>
         </div>
+        <div class="settings-sec">
+          <h3>Stats numbers</h3>
+          <div class="settings-grid">
+            <div class="field"><label>Happy riders</label><input id="w-riders" type="number"/></div>
+            <div class="field"><label>Brands</label><input id="w-brands" type="number"/></div>
+          </div>
+          <p style="font-size:.74rem;color:var(--grey)">"Bikes in stock" counts automatically from your bike list.</p>
+        </div>
+        <div class="settings-sec">
+          <h3>Loan section</h3>
+          <div class="settings-grid">
+            <div class="field full"><label>Loan heading</label><input id="w-loanTitle"/></div>
+            <div class="field full"><label>Loan sub text</label><textarea id="w-loanSub"></textarea></div>
+            <div class="field full"><label>Loan points (one per line)</label><textarea id="w-loanPoints" style="min-height:110px"></textarea></div>
+            <div class="field"><label>Default interest rate (%)</label><input id="w-rate" type="number" step="0.5"/></div>
+          </div>
+        </div>
+        <button class="btn btn-orange" onclick="saveContent()">Save all text</button>
       </div>
-      <div class="settings-sec">
-        <h3>Admin security</h3>
-        <p style="font-size:.82rem;color:var(--cream);margin-bottom:8px">Your admin login now runs on real Supabase authentication — no password is stored on this page.</p>
-        <p style="font-size:.74rem;color:var(--grey)">To change your password: Supabase Dashboard → Authentication → Users → click your admin user → Reset password.</p>
-      </div>
-      <button class="btn btn-orange" onclick="saveSettings()">Save settings</button>
-    </div>
 
-    <!-- ANALYTICS -->
-    <div class="admin-pane" id="pane-analytics">
-      <div class="stat-cards">
-        <div class="stat-card"><div class="v" id="an-total">0</div><div class="k">Total Visits (30 days)</div></div>
-        <div class="stat-card"><div class="v" id="an-today">0</div><div class="k">Visits Today</div></div>
-        <div class="stat-card"><div class="v" id="an-avg">0</div><div class="k">Avg / Day</div></div>
-        <div class="stat-card"><div class="v" id="an-wa">0</div><div class="k">WhatsApp Clicks</div></div>
+      <!-- SETTINGS -->
+      <div class="admin-pane" id="pane-settings">
+        <div class="settings-sec">
+          <h3>Contact details</h3>
+          <div class="settings-grid">
+            <div class="field"><label>Phone (display)</label><input id="s-phone"/></div>
+            <div class="field"><label>WhatsApp number (digits with country code)</label><input id="s-wa" inputmode="numeric"/></div>
+            <div class="field full"><label>Address (also used for the map)</label><input id="s-address"/></div>
+            <div class="field"><label>Working hours</label><input id="s-hours"/></div>
+            <div class="field"><label>Proprietor</label><input id="s-owner"/></div>
+          </div>
+        </div>
+        <div class="settings-sec">
+          <h3>Admin security</h3>
+          <p style="font-size:.82rem;color:var(--cream);margin-bottom:8px">Your admin login now runs on real Supabase authentication — no password is stored on this page.</p>
+          <p style="font-size:.74rem;color:var(--grey)">To change your password: Supabase Dashboard → Authentication → Users → click your admin user → Reset password.</p>
+        </div>
+        <button class="btn btn-orange" onclick="saveSettings()">Save settings</button>
       </div>
-      <div class="chart-card">
-        <h4>Visits — Last 7 Days</h4>
-        <div class="bar-chart" id="visitChart"></div>
+
+      <!-- ANALYTICS -->
+      <div class="admin-pane" id="pane-analytics">
+        <div class="stat-cards">
+          <div class="stat-card"><div class="v" id="an-total">0</div><div class="k">Total Visits (30 days)</div></div>
+          <div class="stat-card"><div class="v" id="an-today">0</div><div class="k">Visits Today</div></div>
+          <div class="stat-card"><div class="v" id="an-avg">0</div><div class="k">Avg / Day</div></div>
+          <div class="stat-card"><div class="v" id="an-wa">0</div><div class="k">WhatsApp Clicks</div></div>
+        </div>
+        <div class="chart-card">
+          <h4>Visits — Last 7 Days</h4>
+          <div class="bar-chart" id="visitChart"></div>
+        </div>
+        <p class="analytics-note">This is sample data to show how the graph will look. Once Supabase is connected, every real visit and WhatsApp click gets logged automatically and this chart updates from live data.</p>
       </div>
-      <p class="analytics-note">This is sample data to show how the graph will look. Once Supabase is connected, every real visit and WhatsApp click gets logged automatically and this chart updates from live data.</p>
     </div>
   </div>
 </div>
@@ -853,9 +999,32 @@ async function loadTestis(){
  if(error){showDbError("testimonials load error",error);return;}
  testis=data.map(t=>({id:t.id,name:t.name,bike:t.bike,stars:t.stars,text:t.body}));
 }
+let offers=[];
+async function loadOffers(){
+ const {data,error}=await sb.from("offers").select("*").order("created_at",{ascending:false});
+ if(error){showDbError("offers load error",error);return;}
+ offers=data;
+}
+function applyOffer(){
+ const active=offers.find(o=>o.active);
+ if(!active||offerBannerDismissed){
+  $("offerBanner").classList.remove("show");
+  $("offerSection").classList.remove("show");
+  return;
+ }
+ $("offerBannerText").textContent="🔥 "+active.title;
+ $("offerBanner").classList.add("show");
+ $("offerTitle").textContent=active.title;
+ $("offerDesc").textContent=active.description||"";
+ if(active.image_url){$("offerImg").src=active.image_url;}
+ $("offerSection").classList.add("show");
+}
+let offerBannerDismissed=false;
+function dismissOfferBanner(){offerBannerDismissed=true;$("offerBanner").classList.remove("show");}
+
 async function loadAllAndRender(){
- await Promise.all([loadSettings(),loadContent(),loadBikes(),loadTestis()]);
- applySettings();applyContent();renderGrid();renderTestis();calcEMI();
+ await Promise.all([loadSettings(),loadContent(),loadBikes(),loadTestis(),loadOffers()]);
+ applySettings();applyContent();renderGrid();renderTestis();applyOffer();calcEMI();
 }
 
 
@@ -1072,14 +1241,32 @@ async function renderAnalytics(){
 async function logPageView(){
  try{await sb.from("page_views").insert({path:location.pathname||"/"});}catch(e){}
 }
-function openAdmin(){$("admin").classList.add("open");document.body.style.overflow="hidden";renderAdmin();renderTestiAdmin();fillSettingsForm();fillContentForm();renderAnalytics();resetForm();}
+function openAdmin(){$("admin").classList.add("open");document.body.style.overflow="hidden";renderAdmin();renderOfferAdmin();renderTestiAdmin();fillSettingsForm();fillContentForm();renderAnalytics();resetForm();resetOfferForm();}
 function closeAdmin(){$("admin").classList.remove("open");document.body.style.overflow="";if(location.hash==="#admin")history.replaceState(null,"",location.pathname);}
+const PANE_META={
+ bikes:["Bikes","Manage your showroom inventory"],
+ offers:["Offers","Run a promotion or advertisement on your homepage"],
+ testis:["Testimonials","Manage customer reviews shown on the site"],
+ content:["Website Text","Edit homepage headline, stats and loan copy"],
+ settings:["Contact & Settings","Phone, WhatsApp, address, hours and proprietor name"],
+ analytics:["Visitors","See how many people are visiting your site"]
+};
 function adminTab(btn){
- document.querySelectorAll(".admin-tabs button").forEach(b=>b.classList.remove("active"));
+ document.querySelectorAll(".admin-nav button").forEach(b=>b.classList.remove("active"));
  btn.classList.add("active");
  document.querySelectorAll(".admin-pane").forEach(p=>p.classList.remove("active"));
  $("pane-"+btn.dataset.pane).classList.add("active");
+ const meta=PANE_META[btn.dataset.pane];
+ if(meta){$("adminPaneTitle").textContent=meta[0];$("adminPaneSub").textContent=meta[1];}
+ $("adminSidebar").classList.remove("open");
 }
+function toggleAdminSidebar(){$("adminSidebar").classList.toggle("open");}
+function toggleCustom(selectId,customId){
+ const show=$(selectId).value==="__custom__";
+ $(customId+"-wrap").classList.toggle("show",show);
+ if(show)setTimeout(()=>$(customId).focus(),50);
+}
+
 function renderAdmin(){
  $("adminList").innerHTML=bikes.map(b=>`
   <div class="arow">
@@ -1129,8 +1316,12 @@ async function saveBike(){
  photoTouched=true;
  if(!name){alert("Please enter the bike name / model.");return;}
  if(formPhotos.length===0){renderPhotoList();alert("Please add at least one photo before saving this bike.");return;}
- const row={name,brand:$("f-brand").value,year:+$("f-year").value||new Date().getFullYear(),cc:+$("f-cc").value||0,km:+$("f-km").value||0,
-  owners:+$("f-owners").value,fuel:$("f-fuel").value,color:$("f-color").value.trim(),reg:$("f-reg").value.trim(),
+ let brand=$("f-brand").value;
+ if(brand==="__custom__"){brand=$("f-brand-custom").value.trim();if(!brand){alert("Please type the new brand name.");return;}}
+ let fuel=$("f-fuel").value;
+ if(fuel==="__custom__"){fuel=$("f-fuel-custom").value.trim();if(!fuel){alert("Please type the fuel type.");return;}}
+ const row={name,brand,year:+$("f-year").value||new Date().getFullYear(),cc:+$("f-cc").value||0,km:+$("f-km").value||0,
+  owners:+$("f-owners").value,fuel,color:$("f-color").value.trim(),reg:$("f-reg").value.trim(),
   price:+$("f-price").value||0,cond:$("f-cond").value,status:$("f-status").value,photos:[...formPhotos],
   description:$("f-desc").value.trim()||"Contact us on WhatsApp for full details, more photos and a test ride."};
  let error;
@@ -1139,11 +1330,21 @@ async function saveBike(){
  if(error){alert("Could not save: "+error.message);return;}
  await loadBikes();renderAdmin();renderGrid();resetForm();
 }
+function setSelectOrCustom(selectId,customWrapId,customInputId,value){
+ const sel=$(selectId);
+ const hasOption=[...sel.options].some(o=>o.value===value||o.textContent===value);
+ if(hasOption){sel.value=value;$(customWrapId).classList.remove("show");}
+ else{sel.value="__custom__";$(customWrapId).classList.add("show");$(customInputId).value=value;}
+}
 function editBike(id){
  const b=bikes.find(x=>x.id===id);if(!b)return;editingId=id;
  const s=(i,v)=>$(i).value=v;
- s("f-name",b.name);s("f-brand",b.brand);s("f-year",b.year);s("f-cc",b.cc);s("f-km",b.km);
- s("f-owners",b.owners);s("f-fuel",b.fuel);s("f-color",b.color||"");s("f-reg",b.reg||"");
+ s("f-name",b.name);
+ setSelectOrCustom("f-brand","f-brand-custom-wrap","f-brand-custom",b.brand);
+ s("f-year",b.year);s("f-cc",b.cc);s("f-km",b.km);
+ s("f-owners",b.owners);
+ setSelectOrCustom("f-fuel","f-fuel-custom-wrap","f-fuel-custom",b.fuel);
+ s("f-color",b.color||"");s("f-reg",b.reg||"");
  s("f-price",b.price);s("f-cond",b.cond);s("f-status",b.status);s("f-desc",b.desc||"");
  formPhotos=[...(b.photos||[])];photoTouched=false;renderPhotoList();
  $("formTitle").textContent="Edit bike";$("cancelEdit").hidden=false;
@@ -1151,8 +1352,10 @@ function editBike(id){
 }
 function resetForm(){
  editingId=null;
- ["f-name","f-year","f-cc","f-km","f-color","f-reg","f-price","f-desc","f-photos-input"].forEach(i=>$(i).value="");
+ ["f-name","f-year","f-cc","f-km","f-color","f-reg","f-price","f-desc","f-photos-input","f-brand-custom","f-fuel-custom"].forEach(i=>$(i).value="");
  $("f-owners").value="0";$("f-fuel").value="Petrol";$("f-cond").value="new";$("f-status").value="available";
+ $("f-brand").value="Royal Enfield";
+ $("f-brand-custom-wrap").classList.remove("show");$("f-fuel-custom-wrap").classList.remove("show");
  formPhotos=[];photoTouched=false;renderPhotoList();
  $("formTitle").textContent="Add a bike";$("cancelEdit").hidden=true;
 }
@@ -1190,6 +1393,81 @@ async function onPhotoFilesChosen(input){
  input.value="";
  $("photoManager").classList.remove("uploading");
  renderPhotoList();
+}
+
+/* ============ OFFERS ============ */
+let oEditingId=null,oImageUrl="";
+async function onOfferFileChosen(input){
+ if(!input.files||!input.files.length)return;
+ const file=input.files[0];
+ const path=`${Date.now()}-${Math.random().toString(36).slice(2,8)}-${file.name.replace(/\s+/g,"_")}`;
+ const {error}=await sb.storage.from("offer-photos").upload(path,file,{cacheControl:"3600",upsert:false});
+ if(error){alert("Upload failed: "+error.message);return;}
+ const {data}=sb.storage.from("offer-photos").getPublicUrl(path);
+ oImageUrl=data.publicUrl;
+ $("o-photo-url").value=oImageUrl;
+ renderOfferPreview();
+}
+function renderOfferPreview(){
+ const url=$("o-photo-url").value.trim();
+ $("offerPhotoPreview").innerHTML=url?`<div class="photo-item cover"><span class="cov-badge">PREVIEW</span><img src="${url}" onerror="this.src=''"/></div>`:"";
+}
+$("o-photo-url")&&$("o-photo-url").addEventListener("input",renderOfferPreview);
+function renderOfferAdmin(){
+ $("offerAdminList").innerHTML=offers.map(o=>`
+  <div class="trow" style="flex-direction:row;align-items:center;gap:14px">
+   <div style="width:90px;height:66px;flex:none;border-radius:10px;overflow:hidden;background:var(--bg)">
+    ${o.image_url?`<img src="${o.image_url}" style="width:100%;height:100%;object-fit:cover"/>`:""}
+   </div>
+   <div style="flex:1;min-width:0">
+     <div style="display:flex;align-items:center;gap:8px">
+       <b style="font-family:'Rajdhani';text-transform:uppercase;font-size:1.05rem">${o.title}</b>
+       <span style="font-size:.62rem;padding:3px 9px;border-radius:100px;font-weight:700;background:${o.active?"rgba(37,211,102,.15);color:#3ee08a":"rgba(160,160,160,.15);color:var(--grey)"}">${o.active?"ACTIVE":"OFF"}</span>
+     </div>
+     <p class="meta" style="margin-top:2px">${(o.description||"").slice(0,80)}</p>
+   </div>
+   <div class="acts" style="margin:0;width:auto;flex:none">
+     <button class="mini" onclick="editOffer('${o.id}')">Edit</button>
+     <button class="mini" onclick="toggleOfferActive('${o.id}')">${o.active?"Turn off":"Turn on"}</button>
+     <button class="mini del" onclick="delOffer('${o.id}')">Delete</button>
+   </div>
+  </div>`).join("")||`<p style="color:var(--grey)">No offers yet — add one to advertise a sale or promotion.</p>`;
+}
+async function saveOffer(){
+ const title=$("o-title").value.trim();
+ if(!title){alert("Please enter an offer title.");return;}
+ const row={title,description:$("o-desc").value.trim(),image_url:$("o-photo-url").value.trim(),active:$("o-active").value==="true"};
+ let error;
+ if(oEditingId){({error}=await sb.from("offers").update(row).eq("id",oEditingId));}
+ else{({error}=await sb.from("offers").insert(row));}
+ if(error){alert("Could not save offer: "+error.message);return;}
+ await loadOffers();renderOfferAdmin();applyOffer();resetOfferForm();
+}
+function editOffer(id){
+ const o=offers.find(x=>x.id===id);if(!o)return;oEditingId=id;
+ $("o-title").value=o.title;$("o-desc").value=o.description||"";$("o-photo-url").value=o.image_url||"";
+ $("o-active").value=String(o.active);
+ renderOfferPreview();
+ $("oFormTitle").textContent="Edit offer";$("oCancelEdit").hidden=false;
+}
+function resetOfferForm(){
+ oEditingId=null;oImageUrl="";
+ ["o-title","o-desc","o-photo-url"].forEach(i=>$(i)&&($(i).value=""));
+ $("o-active")&&($("o-active").value="true");
+ renderOfferPreview();
+ $("oFormTitle").textContent="Add an offer";$("oCancelEdit").hidden=true;
+}
+async function toggleOfferActive(id){
+ const o=offers.find(x=>x.id===id);if(!o)return;
+ const {error}=await sb.from("offers").update({active:!o.active}).eq("id",id);
+ if(error){alert("Could not update: "+error.message);return;}
+ await loadOffers();renderOfferAdmin();applyOffer();
+}
+async function delOffer(id){
+ if(!confirm("Delete this offer?"))return;
+ const {error}=await sb.from("offers").delete().eq("id",id);
+ if(error){alert("Could not delete: "+error.message);return;}
+ await loadOffers();renderOfferAdmin();applyOffer();
 }
 
 function renderTestiAdmin(){
