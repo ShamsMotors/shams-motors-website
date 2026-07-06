@@ -181,7 +181,9 @@ section{padding:clamp(60px,9vw,92px) 0}
 .emi-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:clamp(22px,4vw,32px)}
 .emi-card h3{font-family:'Rajdhani';font-weight:700;text-transform:uppercase;font-size:1.45rem;margin-bottom:18px}
 .slider-row{margin-bottom:18px}
-.slider-row .top{display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:8px;gap:10px}
+.slider-row .top{display:flex;justify-content:space-between;align-items:center;font-size:.8rem;margin-bottom:8px;gap:10px}
+.emi-num{width:110px;background:var(--bg);border:1px solid var(--line);color:var(--gold-hi);font-family:'Space Mono',monospace;font-weight:700;font-size:.85rem;padding:6px 10px;border-radius:8px;text-align:right;transition:border-color .2s}
+.emi-num:focus{outline:none;border-color:var(--orange)}
 .slider-row .top b{font-family:'Space Mono';color:var(--gold-hi)}
 .slider-row .top span{color:var(--grey);letter-spacing:.06em;text-transform:uppercase;font-size:.64rem}
 input[type=range]{width:100%;appearance:none;-webkit-appearance:none;height:5px;border-radius:5px;background:var(--panel-2);outline:none}
@@ -385,7 +387,8 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--grey);font-si
 }
 
 /* ============ OFFER BANNER + SECTION ============ */
-.offer-banner{background:linear-gradient(90deg,var(--orange),var(--gold));color:#1b0e02;overflow:hidden;position:relative;display:none}
+.offer-banner{background:linear-gradient(90deg,var(--orange),var(--gold));color:#1b0e02;overflow:hidden;position:relative;display:none;margin-top:78px}
+@media(max-width:900px){.offer-banner{margin-top:70px}}
 .offer-banner.show{display:block}
 .offer-banner-in{display:flex;align-items:center;justify-content:center;gap:10px;padding:9px 40px 9px 16px;font-weight:700;font-size:.86rem;text-align:center;position:relative}
 .offer-banner-in span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:80vw}
@@ -393,8 +396,9 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--grey);font-si
 .offer-section{display:none}
 .offer-section.show{display:block}
 .offer-section-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:0;border-radius:20px;overflow:hidden;border:1px solid rgba(255,122,26,.35);background:linear-gradient(150deg,#241a0d,var(--panel))}
-.offer-img{position:relative;min-height:220px;background:linear-gradient(145deg,#20180c,#120d07)}
-.offer-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.offer-img{position:relative;min-height:260px;overflow:hidden;background:#0c0906;cursor:zoom-in}
+.offer-img .bg-blur{position:absolute;inset:-20px;background-size:cover;background-position:center;filter:blur(28px) brightness(.45) saturate(1.2);transform:scale(1.15)}
+.offer-img img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;padding:16px}
 .offer-text{padding:clamp(24px,4vw,40px);display:flex;flex-direction:column;justify-content:center}
 .offer-text .tag{position:static;display:inline-block;margin-bottom:14px;background:var(--orange);color:#1b0e02;font-family:'Space Mono';font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:5px 12px;border-radius:7px;width:fit-content}
 .offer-text h3{font-family:'Rajdhani';font-weight:700;text-transform:uppercase;font-size:clamp(1.6rem,4vw,2.4rem);line-height:1.05;margin-bottom:12px}
@@ -571,7 +575,10 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--grey);font-si
 <section class="offer-section" id="offerSection" style="padding-top:40px;padding-bottom:10px">
   <div class="wrap">
     <div class="offer-section-grid reveal in">
-      <div class="offer-img"><img id="offerImg" alt="Current offer"/></div>
+      <div class="offer-img" onclick="openOfferLightbox()">
+        <div class="bg-blur" id="offerImgBg"></div>
+        <img id="offerImg" alt="Current offer"/>
+      </div>
       <div class="offer-text">
         <span class="tag">Limited Time Offer</span>
         <h3 id="offerTitle"></h3>
@@ -623,10 +630,10 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--grey);font-si
       </div>
       <div class="emi-card reveal">
         <h3>EMI Calculator</h3>
-        <div class="slider-row"><div class="top"><span>Bike Price</span><b id="emiPriceLab"></b></div><input type="range" id="emiPrice" min="30000" max="500000" step="5000" value="150000"/></div>
-        <div class="slider-row"><div class="top"><span>Down Payment</span><b id="emiDownLab"></b></div><input type="range" id="emiDown" min="0" max="200000" step="5000" value="30000"/></div>
-        <div class="slider-row"><div class="top"><span>Tenure (months)</span><b id="emiTenLab"></b></div><input type="range" id="emiTen" min="6" max="48" step="6" value="24"/></div>
-        <div class="slider-row"><div class="top"><span>Interest Rate (% p.a.)</span><b id="emiRateLab"></b></div><input type="range" id="emiRate" min="8" max="20" step="0.5" value="11"/></div>
+        <div class="slider-row"><div class="top"><span>Bike Price</span><input type="number" class="emi-num" id="emiPriceNum" value="150000"/></div><input type="range" id="emiPrice" min="30000" max="500000" step="5000" value="150000"/></div>
+        <div class="slider-row"><div class="top"><span>Down Payment</span><input type="number" class="emi-num" id="emiDownNum" value="30000"/></div><input type="range" id="emiDown" min="0" max="200000" step="5000" value="30000"/></div>
+        <div class="slider-row"><div class="top"><span>Tenure (months)</span><input type="number" class="emi-num" id="emiTenNum" value="24"/></div><input type="range" id="emiTen" min="6" max="48" step="6" value="24"/></div>
+        <div class="slider-row"><div class="top"><span>Interest Rate (% p.a.)</span><input type="number" class="emi-num" id="emiRateNum" value="11" step="0.5"/></div><input type="range" id="emiRate" min="0" max="24" step="0.5" value="11"/></div>
         <div class="emi-result">
           <div><div class="lab">Your monthly EMI</div><div class="val" id="emiOut">₹0</div></div>
           <a href="#" id="emiWa" target="_blank" class="btn btn-orange" style="padding:11px 18px">Get This Plan</a>
@@ -925,6 +932,7 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--grey);font-si
             <div class="field"><label>Phone (display)</label><input id="s-phone"/></div>
             <div class="field"><label>WhatsApp number (digits with country code)</label><input id="s-wa" inputmode="numeric"/></div>
             <div class="field full"><label>Address (also used for the map)</label><input id="s-address"/></div>
+            <div class="field full"><label>Maps Embed Link (optional — for a precise pinned location)</label><input id="s-maps" placeholder="Paste link from Google Maps → Share → Embed a map"/></div>
             <div class="field"><label>Working hours</label><input id="s-hours"/></div>
             <div class="field"><label>Proprietor</label><input id="s-owner"/></div>
           </div>
@@ -971,7 +979,7 @@ const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 let isAdminLoggedIn = false;
 
 /* ============ DATA — now loaded from Supabase, not hardcoded ============ */
-let settings={phone:"",wa:"",address:"",hours:"",owner:""};
+let settings={phone:"",wa:"",address:"",hours:"",owner:"",mapsEmbed:""};
 let content={eyebrow:"",h1a:"",h1b:"",sub:"",riders:0,brands:0,loanTitle:"",loanSub:"",loanPoints:"",rate:11};
 let bikes=[];
 let testis=[];
@@ -991,7 +999,7 @@ function showDbError(where,error){
 async function loadSettings(){
  const {data,error}=await sb.from("settings").select("*").eq("id",1).single();
  if(error){showDbError("settings load error",error);return;}
- settings={phone:data.phone,wa:data.wa,address:data.address,hours:data.hours,owner:data.owner};
+ settings={phone:data.phone,wa:data.wa,address:data.address,hours:data.hours,owner:data.owner,mapsEmbed:data.maps_embed||""};
 }
 async function loadContent(){
  const {data,error}=await sb.from("content").select("*").eq("id",1).single();
@@ -1016,6 +1024,7 @@ async function loadOffers(){
  if(error){showDbError("offers load error",error);return;}
  offers=data;
 }
+let currentOfferImage="";
 function applyOffer(){
  const active=offers.find(o=>o.active);
  if(!active||offerBannerDismissed){
@@ -1027,8 +1036,21 @@ function applyOffer(){
  $("offerBanner").classList.add("show");
  $("offerTitle").textContent=active.title;
  $("offerDesc").textContent=active.description||"";
- if(active.image_url){$("offerImg").src=active.image_url;}
+ if(active.image_url){
+  $("offerImg").src=active.image_url;
+  $("offerImgBg").style.backgroundImage=`url('${active.image_url}')`;
+  currentOfferImage=active.image_url;
+ }
  $("offerSection").classList.add("show");
+}
+function openOfferLightbox(){
+ if(!currentOfferImage)return;
+ $("modalCard").innerHTML=`
+  <button class="m-close" onclick="closeModal()">✕</button>
+  <div style="display:flex;align-items:center;justify-content:center;background:#0c0906;min-height:60vh">
+   <img src="${currentOfferImage}" style="max-width:100%;max-height:85vh;object-fit:contain"/>
+  </div>`;
+ $("modal").classList.add("open");document.body.style.overflow="hidden";
 }
 let offerBannerDismissed=false;
 function dismissOfferBanner(){offerBannerDismissed=true;$("offerBanner").classList.remove("show");}
@@ -1158,22 +1180,31 @@ function applyContent(){
 }
 
 /* ============ EMI ============ */
+const EMI_PAIRS=[["emiPrice","emiPriceNum"],["emiDown","emiDownNum"],["emiTen","emiTenNum"],["emiRate","emiRateNum"]];
 function calcEMI(){
  const P=+$("emiPrice").value-+$("emiDown").value;
  const n=+$("emiTen").value,r=(+$("emiRate").value)/1200;
- $("emiPriceLab").textContent=fmt($("emiPrice").value);
- $("emiDownLab").textContent=fmt($("emiDown").value);
- $("emiTenLab").textContent=n;
- $("emiRateLab").textContent=$("emiRate").value+"%";
  $("emiDown").max=Math.max(0,+$("emiPrice").value-10000);
- if(+$("emiDown").value>+$("emiDown").max)$("emiDown").value=$("emiDown").max;
+ if(+$("emiDown").value>+$("emiDown").max){$("emiDown").value=$("emiDown").max;$("emiDownNum").value=$("emiDown").max;}
  let emi=0;
- if(P>0)emi=Math.round(P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1));
+ if(P>0){
+  emi = r===0 ? Math.round(P/n) : Math.round(P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1));
+ }
  $("emiOut").textContent=fmt(Math.max(emi,0));
- const msg=encodeURIComponent(`Hi Shams Motors, I checked the EMI calculator: bike price ${fmt($("emiPrice").value)}, down payment ${fmt($("emiDown").value)}, ${n} months. EMI around ${fmt(emi)}. Please share loan details.`);
+ const msg=encodeURIComponent(`Hi Shams Motors, I checked the EMI calculator: bike price ${fmt($("emiPrice").value)}, down payment ${fmt($("emiDown").value)}, ${n} months, ${$("emiRate").value}% rate. EMI around ${fmt(emi)}. Please share loan details.`);
  $("emiWa").href=`https://wa.me/${settings.wa}?text=${msg}`;
 }
-["emiPrice","emiDown","emiTen","emiRate"].forEach(id=>$(id).addEventListener("input",calcEMI));
+EMI_PAIRS.forEach(([rangeId,numId])=>{
+ const rangeEl=$(rangeId),numEl=$(numId);
+ rangeEl.addEventListener("input",()=>{numEl.value=rangeEl.value;calcEMI();});
+ numEl.addEventListener("input",()=>{
+  let v=+numEl.value||0;
+  const max=+rangeEl.max;
+  // allow typing beyond slider's visual max (e.g. bike price above 5L) without clamping the number itself
+  rangeEl.value=Math.min(Math.max(v,+rangeEl.min),max);
+  calcEMI();
+ });
+});
 
 /* ============ ENQUIRY ============ */
 function sendEnquiry(){
@@ -1192,7 +1223,14 @@ function applySettings(){
  $("c-owner").textContent=settings.owner;
  $("f-owner").textContent="Hosted by "+settings.owner;
  $("callBtn").href="tel:+"+settings.wa;
- $("mapFrame").src="https://www.google.com/maps?q="+encodeURIComponent(settings.address)+"&output=embed";
+ function resolveMapsSrc(v){
+  if(!v)return "";
+  const m=v.match(/src=["']([^"']+)["']/i);
+  return m ? m[1] : v;
+ }
+ $("mapFrame").src = settings.mapsEmbed && settings.mapsEmbed.trim()
+   ? resolveMapsSrc(settings.mapsEmbed.trim())
+   : "https://www.google.com/maps?q="+encodeURIComponent(settings.address)+"&output=embed";
  document.querySelectorAll("[data-wa]").forEach(a=>{a.href=`https://wa.me/${settings.wa}?text=${encodeURIComponent(a.dataset.wa)}`;});
 }
 
@@ -1548,11 +1586,12 @@ async function delTesti(id){
 
 function fillSettingsForm(){
  $("s-phone").value=settings.phone;$("s-wa").value=settings.wa;$("s-address").value=settings.address;
- $("s-hours").value=settings.hours;$("s-owner").value=settings.owner;
+ $("s-hours").value=settings.hours;$("s-owner").value=settings.owner;$("s-maps").value=settings.mapsEmbed||"";
 }
 async function saveSettings(){
  const row={phone:$("s-phone").value.trim(),wa:$("s-wa").value.replace(/\D/g,""),
-  address:$("s-address").value.trim(),hours:$("s-hours").value.trim(),owner:$("s-owner").value.trim()};
+  address:$("s-address").value.trim(),hours:$("s-hours").value.trim(),owner:$("s-owner").value.trim(),
+  maps_embed:$("s-maps").value.trim()};
  const {error}=await sb.from("settings").update(row).eq("id",1);
  if(error){showToast("Could not save settings: "+error.message,"error");return;}
  await loadSettings();applySettings();calcEMI();
