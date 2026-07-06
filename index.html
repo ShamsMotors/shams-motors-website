@@ -83,6 +83,8 @@ header.nav.scrolled{background:rgba(13,10,7,.88);border-color:var(--line)}
 .nav-in{display:flex;align-items:center;justify-content:space-between;padding:11px 0}
 .nav-links{display:flex;gap:24px;align-items:center}
 .nav-links a{font-size:.9rem;font-weight:500;color:var(--grey);transition:color .25s}
+.nav-links a.btn-orange{color:#1b0e02}
+.nav-links a.btn-ghost{color:var(--cream)}
 .nav-links a:hover{color:var(--orange-hi)}
 .nav-toggle{display:none;background:none;border:none;color:var(--cream);cursor:pointer}
 
@@ -387,22 +389,31 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--grey);font-si
 }
 
 /* ============ OFFER BANNER + SECTION ============ */
-.offer-banner{background:linear-gradient(90deg,var(--orange),var(--gold));color:#1b0e02;overflow:hidden;position:relative;display:none;margin-top:78px}
+.offer-banner{background:linear-gradient(90deg,#e0680f,var(--orange) 45%,var(--gold));color:#1b0e02;overflow:hidden;position:relative;display:none;margin-top:78px;cursor:pointer;box-shadow:0 4px 16px -6px rgba(0,0,0,.4)}
 @media(max-width:900px){.offer-banner{margin-top:70px}}
 .offer-banner.show{display:block}
-.offer-banner-in{display:flex;align-items:center;justify-content:center;gap:10px;padding:9px 40px 9px 16px;font-weight:700;font-size:.86rem;text-align:center;position:relative}
-.offer-banner-in span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:80vw}
-.offer-banner-close{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.15);border:none;color:#1b0e02;width:22px;height:22px;border-radius:50%;cursor:pointer;font-size:.8rem;line-height:1}
+.offer-banner-in{display:flex;align-items:center;justify-content:center;gap:10px;padding:10px 44px;font-weight:700;font-size:.86rem;text-align:center;position:relative}
+.offer-banner-in .fire{display:inline-block;animation:firepulse 1.8s ease-in-out infinite;flex:none}
+@keyframes firepulse{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+.offer-banner-in span.txt{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:66vw}
+.offer-banner-in .view-hint{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;letter-spacing:.05em;opacity:.85;flex:none}
+.offer-banner-close{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.15);border:none;color:#1b0e02;width:24px;height:24px;border-radius:50%;cursor:pointer;font-size:.8rem;line-height:1;z-index:2}
+.offer-dots{position:absolute;bottom:2px;left:0;right:0;display:flex;justify-content:center;gap:5px}
+.offer-dots span{width:5px;height:5px;border-radius:50%;background:rgba(27,14,2,.3);transition:.3s}
+.offer-dots span.active{background:#1b0e02;width:14px;border-radius:4px}
+
 .offer-section{display:none}
 .offer-section.show{display:block}
-.offer-section-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:0;border-radius:20px;overflow:hidden;border:1px solid rgba(255,122,26,.35);background:linear-gradient(150deg,#241a0d,var(--panel))}
-.offer-img{position:relative;min-height:260px;overflow:hidden;background:#0c0906;cursor:zoom-in}
+.offer-multi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:22px}
+.offer-card{border-radius:18px;overflow:hidden;border:1px solid rgba(255,122,26,.3);background:linear-gradient(150deg,#211809,var(--panel));display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s}
+.offer-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px -20px rgba(255,122,26,.35)}
+.offer-img{position:relative;min-height:200px;overflow:hidden;background:#0c0906;cursor:zoom-in}
 .offer-img .bg-blur{position:absolute;inset:-20px;background-size:cover;background-position:center;filter:blur(28px) brightness(.45) saturate(1.2);transform:scale(1.15)}
-.offer-img img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;padding:16px}
-.offer-text{padding:clamp(24px,4vw,40px);display:flex;flex-direction:column;justify-content:center}
-.offer-text .tag{position:static;display:inline-block;margin-bottom:14px;background:var(--orange);color:#1b0e02;font-family:'Space Mono';font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:5px 12px;border-radius:7px;width:fit-content}
-.offer-text h3{font-family:'Rajdhani';font-weight:700;text-transform:uppercase;font-size:clamp(1.6rem,4vw,2.4rem);line-height:1.05;margin-bottom:12px}
-.offer-text p{color:var(--grey);font-size:.95rem;margin-bottom:22px}
+.offer-img img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;padding:14px}
+.offer-text{padding:22px 24px 26px;display:flex;flex-direction:column;flex:1}
+.offer-text .tag{display:inline-block;margin-bottom:12px;background:var(--orange);color:#1b0e02;font-family:'Space Mono';font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:4px 11px;border-radius:7px;width:fit-content}
+.offer-text h3{font-family:'Rajdhani';font-weight:700;text-transform:uppercase;font-size:1.5rem;line-height:1.08;margin-bottom:10px}
+.offer-text p{color:var(--grey);font-size:.88rem;margin-bottom:18px;flex:1}
 
 /* ============ CUSTOM "OTHER" INPUT TOGGLE ============ */
 .custom-reveal{display:none;margin-top:8px}
@@ -524,12 +535,15 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--grey);font-si
   </div>
 </header>
 
-<!-- OFFER BANNER (shows automatically when an active offer exists) -->
-<div class="offer-banner" id="offerBanner">
+<!-- OFFER BANNER (shows automatically when an active offer exists; rotates if more than one) -->
+<div class="offer-banner" id="offerBanner" onclick="scrollToOffers(event)">
   <div class="offer-banner-in">
-    <span id="offerBannerText"></span>
-    <button class="offer-banner-close" onclick="dismissOfferBanner()" aria-label="Dismiss">✕</button>
+    <span class="fire">🔥</span>
+    <span class="txt" id="offerBannerText"></span>
+    <span class="view-hint">View offer <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    <button class="offer-banner-close" onclick="dismissOfferBanner(event)" aria-label="Dismiss">✕</button>
   </div>
+  <div class="offer-dots" id="offerDots"></div>
 </div>
 
 <!-- ============ CINEMATIC INTRO ============ -->
@@ -571,21 +585,13 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--grey);font-si
 
 <!-- ============ STOCK ============ -->
 
-<!-- CURRENT OFFER (dedicated section, only shows when admin has an active offer) -->
+<!-- CURRENT OFFERS (dedicated section, only shows when admin has active offer(s)) -->
 <section class="offer-section" id="offerSection" style="padding-top:40px;padding-bottom:10px">
   <div class="wrap">
-    <div class="offer-section-grid reveal in">
-      <div class="offer-img" onclick="openOfferLightbox()">
-        <div class="bg-blur" id="offerImgBg"></div>
-        <img id="offerImg" alt="Current offer"/>
-      </div>
-      <div class="offer-text">
-        <span class="tag">Limited Time Offer</span>
-        <h3 id="offerTitle"></h3>
-        <p id="offerDesc"></p>
-        <a href="#" data-wa="Hi Shams Motors, I saw your current offer and I'm interested!" target="_blank" class="btn btn-orange" style="width:fit-content">Ask About This Offer</a>
-      </div>
+    <div class="sec-head reveal in" style="margin-bottom:22px">
+      <div><div class="eyebrow">Limited time</div><h2 style="font-size:clamp(1.7rem,4vw,2.4rem)">Current <span class="gold-text">Offers</span></h2></div>
     </div>
+    <div class="offer-multi-grid reveal in" id="offerMultiGrid"></div>
   </div>
 </section>
 
@@ -1024,36 +1030,72 @@ async function loadOffers(){
  if(error){showDbError("offers load error",error);return;}
  offers=data;
 }
-let currentOfferImage="";
+let activeOffers=[],offerBannerIdx=0,offerRotateTimer=null;
 function applyOffer(){
- const active=offers.find(o=>o.active);
- if(!active||offerBannerDismissed){
+ activeOffers=offers.filter(o=>o.active);
+ if(!activeOffers.length||offerBannerDismissed){
   $("offerBanner").classList.remove("show");
   $("offerSection").classList.remove("show");
+  clearInterval(offerRotateTimer);
   return;
  }
- $("offerBannerText").textContent="🔥 "+active.title;
+ // ---- banner (rotates if multiple) ----
  $("offerBanner").classList.add("show");
- $("offerTitle").textContent=active.title;
- $("offerDesc").textContent=active.description||"";
- if(active.image_url){
-  $("offerImg").src=active.image_url;
-  $("offerImgBg").style.backgroundImage=`url('${active.image_url}')`;
-  currentOfferImage=active.image_url;
+ offerBannerIdx=0;
+ renderBannerSlide();
+ $("offerDots").innerHTML = activeOffers.length>1
+   ? activeOffers.map((_,i)=>`<span class="${i===0?"active":""}"></span>`).join("")
+   : "";
+ clearInterval(offerRotateTimer);
+ if(activeOffers.length>1){
+  offerRotateTimer=setInterval(()=>{
+   offerBannerIdx=(offerBannerIdx+1)%activeOffers.length;
+   renderBannerSlide();
+  },4200);
  }
+ // ---- dedicated section: one card per active offer ----
+ $("offerMultiGrid").innerHTML = activeOffers.map((o,i)=>{
+  const waMsg=encodeURIComponent(`Hi Shams Motors, I saw your offer — ${o.title} — and I'm interested!`);
+  return `
+  <div class="offer-card">
+    <div class="offer-img" onclick="openOfferLightbox(${i})">
+      ${o.image_url?`<div class="bg-blur" style="background-image:url('${o.image_url}')"></div><img src="${o.image_url}" alt="${o.title}"/>`:""}
+    </div>
+    <div class="offer-text">
+      <span class="tag">Limited Time Offer</span>
+      <h3>${o.title}</h3>
+      <p>${o.description||""}</p>
+      <a href="https://wa.me/${settings.wa}?text=${waMsg}" target="_blank" class="btn btn-orange" style="width:fit-content">Ask About This Offer</a>
+    </div>
+  </div>`;
+ }).join("");
  $("offerSection").classList.add("show");
 }
-function openOfferLightbox(){
- if(!currentOfferImage)return;
+function renderBannerSlide(){
+ const o=activeOffers[offerBannerIdx];
+ if(!o)return;
+ $("offerBannerText").textContent=o.title;
+ document.querySelectorAll("#offerDots span").forEach((d,i)=>d.classList.toggle("active",i===offerBannerIdx));
+}
+function scrollToOffers(e){
+ if(e.target.closest(".offer-banner-close"))return;
+ document.getElementById("offerSection").scrollIntoView({behavior:"smooth",block:"start"});
+}
+function openOfferLightbox(idx){
+ const o=activeOffers[idx];
+ if(!o||!o.image_url)return;
  $("modalCard").innerHTML=`
   <button class="m-close" onclick="closeModal()">✕</button>
   <div style="display:flex;align-items:center;justify-content:center;background:#0c0906;min-height:60vh">
-   <img src="${currentOfferImage}" style="max-width:100%;max-height:85vh;object-fit:contain"/>
+   <img src="${o.image_url}" style="max-width:100%;max-height:85vh;object-fit:contain"/>
   </div>`;
  $("modal").classList.add("open");document.body.style.overflow="hidden";
 }
 let offerBannerDismissed=false;
-function dismissOfferBanner(){offerBannerDismissed=true;$("offerBanner").classList.remove("show");}
+function dismissOfferBanner(e){
+ if(e)e.stopPropagation();
+ offerBannerDismissed=true;$("offerBanner").classList.remove("show");clearInterval(offerRotateTimer);
+}
 
 async function loadAllAndRender(){
  await Promise.all([loadSettings(),loadContent(),loadBikes(),loadTestis(),loadOffers()]);
