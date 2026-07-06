@@ -196,6 +196,27 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;
 .emi-note{font-size:.72rem;color:var(--grey);margin-top:12px}
 
 /* TESTIMONIALS */
+/* ============ GOOGLE REVIEWS BADGE ============ */
+.google-badge{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:28px;padding:14px 22px;border:1px solid rgba(232,180,76,.3);border-radius:100px;background:linear-gradient(90deg,rgba(232,180,76,.08),rgba(255,122,26,.06));width:fit-content;margin-inline:auto}
+.google-badge .stars{color:var(--gold);font-size:1rem;letter-spacing:2px}
+.google-badge .rate{font-family:'Rajdhani';font-weight:700;font-size:1.1rem;color:var(--gold-hi)}
+.google-badge .cnt{font-size:.82rem;color:var(--grey)}
+.google-badge a{font-weight:700;font-size:.85rem;color:var(--orange-hi);display:inline-flex;align-items:center;gap:5px;transition:gap .2s}
+.google-badge a:hover{gap:8px}
+
+/* ============ GALLERY (masonry) ============ */
+.masonry{column-count:3;column-gap:16px}
+.masonry .m-item{break-inside:avoid;margin-bottom:16px;border-radius:14px;overflow:hidden;position:relative;cursor:zoom-in;border:1px solid var(--line);background:var(--panel)}
+.masonry .m-item img{width:100%;display:block;transition:transform .4s}
+.masonry .m-item:hover img{transform:scale(1.04)}
+.masonry .m-item .cap{position:absolute;bottom:0;left:0;right:0;padding:14px 12px 10px;font-size:.78rem;color:var(--cream);background:linear-gradient(0deg,rgba(0,0,0,.75),transparent);opacity:0;transition:opacity .25s}
+.masonry .m-item:hover .cap{opacity:1}
+@media(max-width:900px){.masonry{column-count:2}}
+@media(max-width:560px){.masonry{column-count:1}}
+
+/* Instagram icon (gradient brand look) */
+.ig-icon{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%);color:#fff!important}
+.contact-actions a.ig-btn{color:#fff}
 .testi-wrap{overflow:hidden;padding:6px 0}
 .testi-track{display:flex;gap:18px;width:max-content;animation:mscroll 42s linear infinite}
 .testi-wrap:hover .testi-track{animation-play-state:paused}
@@ -526,6 +547,7 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--grey);font-si
       <a href="#stock" onclick="closeNav()">Stock</a>
       <a href="#loan" onclick="closeNav()">Loan &amp; EMI</a>
       <a href="#testimonials" onclick="closeNav()">Reviews</a>
+      <a href="#gallery" onclick="closeNav()">Gallery</a>
       <a href="#contact" onclick="closeNav()">Contact</a>
       <a href="#" data-wa="Hi Shams Motors, I want to know about your bikes" target="_blank" class="btn btn-orange" style="padding:10px 18px">WhatsApp Us</a>
     </nav>
@@ -654,6 +676,14 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--grey);font-si
 <section id="testimonials" style="padding-bottom:40px">
   <div class="wrap">
     <div class="sec-head reveal"><div><div class="eyebrow">Riders speak</div><h2>What Our <span class="gold-text">Customers Say</span></h2></div></div>
+    <div class="google-badge reveal in" id="googleBadge" style="display:none">
+      <span class="stars" id="gbStars"></span>
+      <span class="rate" id="gbRate"></span>
+      <span class="cnt" id="gbCount"></span>
+      <a href="#" id="gbLink" target="_blank">Read all our reviews on Google
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
   </div>
   <div class="testi-wrap reveal"><div class="testi-track" id="testiTrack"></div></div>
 </section>
@@ -672,6 +702,10 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--grey);font-si
         <div class="contact-actions">
           <a href="#" data-wa="Hi Shams Motors, I'd like to visit the showroom" target="_blank" class="btn btn-wa"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2zm5.5 14.2c-.2.6-1.2 1.1-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1-1.4-1-2.6s.6-1.8.8-2.1c.2-.2.5-.3.6-.3h.5c.2 0 .4 0 .6.5l.7 1.7c.1.1.1.3 0 .5l-.3.4-.3.3c-.1.1-.2.3-.1.5s.5.9 1.1 1.4c.8.7 1.4.9 1.6 1s.3.1.5-.1l.6-.7c.2-.2.3-.2.5-.1l1.6.8c.2.1.4.2.4.3.1.1.1.6-.1 1.1z"/></svg> WhatsApp</a>
           <a href="#" id="callBtn" class="btn btn-ghost">Call Now</a>
+          <a href="#" id="igBtn" target="_blank" class="btn ig-icon ig-btn" style="display:none">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            Instagram
+          </a>
         </div>
         <div class="map-box"><iframe id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Shams Motors location"></iframe></div>
       </div>
@@ -693,6 +727,14 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--grey);font-si
   </div>
 </section>
 
+<!-- ============ GALLERY ============ -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="sec-head reveal"><div><div class="eyebrow">A look inside</div><h2>Shop &amp; <span class="gold-text">Events</span></h2></div></div>
+    <div class="masonry reveal in" id="galleryGrid"></div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap foot-in">
     <div class="logo nav-logo" id="footLogo" title="">
@@ -703,7 +745,12 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--grey);font-si
       </span>
     </div>
     <div>© 2026 Shams Motors · shamsmotors.in</div>
-    <div id="f-owner"></div>
+    <div style="display:flex;align-items:center;gap:14px">
+      <span id="f-owner"></span>
+      <a href="#" id="igFootIcon" target="_blank" class="ig-icon" style="display:none;width:32px;height:32px;border-radius:9px;align-items:center;justify-content:center" aria-label="Instagram">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+    </div>
   </div>
 </footer>
 
@@ -755,6 +802,10 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--grey);font-si
       <button data-pane="testis" onclick="adminTab(this)">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15 9 22 9.3 16.5 14 18.2 21 12 17.3 5.8 21 7.5 14 2 9.3 9 9"/></svg>
         Testimonials
+      </button>
+      <button data-pane="gallery" onclick="adminTab(this)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        Gallery
       </button>
       <button data-pane="content" onclick="adminTab(this)">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>
@@ -891,11 +942,28 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--grey);font-si
             <div class="field"><label>Customer name</label><input id="t-name" placeholder="e.g. Aamir Shaikh"/></div>
             <div class="field"><label>Bike purchased</label><input id="t-bike" placeholder="e.g. KTM Duke 390"/></div>
             <div class="field"><label>Rating (1–5)</label><select id="t-stars"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></div>
+            <div class="field"><label>Customer photo (optional)</label><input id="t-photo" placeholder="Paste their Google/photo URL"/></div>
             <div class="field"><label>Their words</label><textarea id="t-text" placeholder="What did they say?"></textarea></div>
             <button class="btn btn-orange" style="width:100%" onclick="saveTesti()">Save testimonial</button>
             <button class="btn btn-ghost" style="width:100%;margin-top:8px" onclick="resetTForm()" id="tCancelEdit" hidden>Cancel edit</button>
           </div>
           <div class="admin-list" id="testiAdminList" style="grid-template-columns:1fr"></div>
+        </div>
+      </div>
+
+      <!-- GALLERY -->
+      <div class="admin-pane" id="pane-gallery">
+        <div class="admin-grid">
+          <div class="form-card">
+            <div class="fc-head">
+              <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+              <h3>Add photos</h3>
+            </div>
+            <p style="font-size:.8rem;color:var(--grey);margin-bottom:16px">Upload shop photos, event photos, anything you want visitors to see. Each one appears instantly in the gallery below.</p>
+            <div class="field"><label>Upload from device (multiple allowed)</label><input type="file" id="g-photos-file" accept="image/*" multiple onchange="onGalleryFilesChosen(this)"/></div>
+            <div class="field"><label>Caption (optional, applies to next upload)</label><input id="g-caption" placeholder="e.g. Showroom launch, March 2026"/></div>
+          </div>
+          <div class="masonry" id="galleryAdminList" style="column-count:2"></div>
         </div>
       </div>
 
@@ -944,6 +1012,21 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--grey);font-si
           </div>
         </div>
         <div class="settings-sec">
+          <h3>Google Reviews</h3>
+          <p style="font-size:.82rem;color:var(--grey);margin-bottom:16px">Shown as a badge above your testimonials. Leave rating/count blank to hide those numbers — the "Read reviews" link still needs the URL below to appear at all.</p>
+          <div class="settings-grid">
+            <div class="field"><label>Star rating (e.g. 4.8)</label><input id="s-grate" placeholder="4.8"/></div>
+            <div class="field"><label>Number of reviews (e.g. 152)</label><input id="s-gcount" placeholder="152"/></div>
+            <div class="field full"><label>Google Reviews link</label><input id="s-gurl" placeholder="Paste your Google Maps reviews link"/></div>
+          </div>
+        </div>
+        <div class="settings-sec">
+          <h3>Social Media</h3>
+          <div class="settings-grid">
+            <div class="field full"><label>Instagram profile link</label><input id="s-insta" placeholder="https://instagram.com/yourshop"/></div>
+          </div>
+        </div>
+        <div class="settings-sec">
           <h3>Admin Security</h3>
           <p style="font-size:.82rem;color:var(--grey);margin-bottom:16px">Change the password used to log into this admin panel.</p>
           <div class="settings-grid">
@@ -985,7 +1068,7 @@ const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 let isAdminLoggedIn = false;
 
 /* ============ DATA — now loaded from Supabase, not hardcoded ============ */
-let settings={phone:"",wa:"",address:"",hours:"",owner:"",mapsEmbed:""};
+let settings={phone:"",wa:"",address:"",hours:"",owner:"",mapsEmbed:"",gRate:"",gCount:"",gUrl:"",instagram:""};
 let content={eyebrow:"",h1a:"",h1b:"",sub:"",riders:0,brands:0,loanTitle:"",loanSub:"",loanPoints:"",rate:11};
 let bikes=[];
 let testis=[];
@@ -1005,7 +1088,8 @@ function showDbError(where,error){
 async function loadSettings(){
  const {data,error}=await sb.from("settings").select("*").eq("id",1).single();
  if(error){showDbError("settings load error",error);return;}
- settings={phone:data.phone,wa:data.wa,address:data.address,hours:data.hours,owner:data.owner,mapsEmbed:data.maps_embed||""};
+ settings={phone:data.phone,wa:data.wa,address:data.address,hours:data.hours,owner:data.owner,mapsEmbed:data.maps_embed||"",
+  gRate:data.google_rating||"",gCount:data.google_review_count||"",gUrl:data.google_reviews_url||"",instagram:data.instagram_url||""};
 }
 async function loadContent(){
  const {data,error}=await sb.from("content").select("*").eq("id",1).single();
@@ -1022,7 +1106,13 @@ async function loadBikes(){
 async function loadTestis(){
  const {data,error}=await sb.from("testimonials").select("*").order("created_at",{ascending:false});
  if(error){showDbError("testimonials load error",error);return;}
- testis=data.map(t=>({id:t.id,name:t.name,bike:t.bike,stars:t.stars,text:t.body}));
+ testis=data.map(t=>({id:t.id,name:t.name,bike:t.bike,stars:t.stars,text:t.body,photo:t.photo_url||""}));
+}
+let gallery=[];
+async function loadGallery(){
+ const {data,error}=await sb.from("gallery").select("*").order("created_at",{ascending:false});
+ if(error){showDbError("gallery load error",error);return;}
+ gallery=data;
 }
 let offers=[];
 async function loadOffers(){
@@ -1098,8 +1188,8 @@ function dismissOfferBanner(e){
 }
 
 async function loadAllAndRender(){
- await Promise.all([loadSettings(),loadContent(),loadBikes(),loadTestis(),loadOffers()]);
- applySettings();applyContent();renderGrid();renderTestis();applyOffer();calcEMI();
+ await Promise.all([loadSettings(),loadContent(),loadBikes(),loadTestis(),loadOffers(),loadGallery()]);
+ applySettings();applyContent();renderGrid();renderTestis();applyOffer();renderGalleryPublic();calcEMI();
 }
 
 
@@ -1201,7 +1291,7 @@ function renderTestis(){
   <div class="testi">
     <div class="stars">${"★".repeat(t.stars)}${"☆".repeat(5-t.stars)}</div>
     <p>“${t.text}”</p>
-    <div class="who"><div class="av">${(t.name||"?").charAt(0)}</div><div><b>${t.name}</b><span>Bought · ${t.bike}</span></div></div>
+    <div class="who">${t.photo?`<img class="av" src="${t.photo}" style="object-fit:cover" onerror="this.outerHTML='<div class=&quot;av&quot;>${(t.name||"?").charAt(0)}</div>'"/>`:`<div class="av">${(t.name||"?").charAt(0)}</div>`}<div><b>${t.name}</b><span>Bought · ${t.bike}</span></div></div>
   </div>`).join("");
  $("testiTrack").innerHTML=cards+cards;
 }
@@ -1274,6 +1364,28 @@ function applySettings(){
    ? resolveMapsSrc(settings.mapsEmbed.trim())
    : "https://www.google.com/maps?q="+encodeURIComponent(settings.address)+"&output=embed";
  document.querySelectorAll("[data-wa]").forEach(a=>{a.href=`https://wa.me/${settings.wa}?text=${encodeURIComponent(a.dataset.wa)}`;});
+
+ // Google reviews badge
+ if(settings.gUrl && settings.gUrl.trim()){
+  $("googleBadge").style.display="flex";
+  $("gbLink").href=settings.gUrl.trim();
+  if(settings.gRate){
+   const r=Math.round(+settings.gRate);
+   $("gbStars").textContent="★".repeat(Math.min(Math.max(r,0),5))+"☆".repeat(5-Math.min(Math.max(r,0),5));
+   $("gbRate").textContent=settings.gRate;
+  } else { $("gbStars").textContent="";$("gbRate").textContent=""; }
+  $("gbCount").textContent = settings.gCount ? `· ${settings.gCount} Google Reviews` : "";
+ } else {
+  $("googleBadge").style.display="none";
+ }
+
+ // Instagram
+ if(settings.instagram && settings.instagram.trim()){
+  $("igBtn").style.display="inline-flex";$("igBtn").href=settings.instagram.trim();
+  $("igFootIcon").style.display="flex";$("igFootIcon").href=settings.instagram.trim();
+ } else {
+  $("igBtn").style.display="none";$("igFootIcon").style.display="none";
+ }
 }
 
 /* ============ HIDDEN ADMIN ACCESS — real Supabase Auth login ============ */
@@ -1359,12 +1471,13 @@ async function renderAnalytics(){
 async function logPageView(){
  try{await sb.from("page_views").insert({path:location.pathname||"/"});}catch(e){}
 }
-function openAdmin(){$("admin").classList.add("open");document.body.style.overflow="hidden";renderAdmin();renderOfferAdmin();renderTestiAdmin();fillSettingsForm();fillContentForm();renderAnalytics();resetForm();resetOfferForm();}
+function openAdmin(){$("admin").classList.add("open");document.body.style.overflow="hidden";renderAdmin();renderOfferAdmin();renderTestiAdmin();renderGalleryAdmin();fillSettingsForm();fillContentForm();renderAnalytics();resetForm();resetOfferForm();}
 function closeAdmin(){$("admin").classList.remove("open");document.body.style.overflow="";if(location.hash==="#admin")history.replaceState(null,"",location.pathname);}
 const PANE_META={
  bikes:["Bikes","Manage your showroom inventory"],
  offers:["Offers","Run a promotion or advertisement on your homepage"],
  testis:["Testimonials","Manage customer reviews shown on the site"],
+ gallery:["Gallery","Shop and event photos shown at the bottom of your homepage"],
  content:["Website Text","Edit homepage headline, stats and loan copy"],
  settings:["Contact & Settings","Phone, WhatsApp, address, hours and proprietor name"],
  analytics:["Visitors","See how many people are visiting your site"]
@@ -1513,6 +1626,56 @@ async function onPhotoFilesChosen(input){
  renderPhotoList();
 }
 
+/* ============ GALLERY ============ */
+function renderGalleryPublic(){
+ $("galleryGrid").innerHTML=gallery.map((g,i)=>`
+  <div class="m-item" onclick="openGalleryLightbox(${i})">
+    <img src="${g.image_url}" alt="${g.caption||'Shams Motors'}" loading="lazy"/>
+    ${g.caption?`<div class="cap">${g.caption}</div>`:""}
+  </div>`).join("") || `<p style="color:var(--grey);grid-column:1/-1">Photos coming soon.</p>`;
+ document.getElementById("gallery").style.display = gallery.length ? "" : "none";
+}
+function openGalleryLightbox(idx){
+ const g=gallery[idx];if(!g)return;
+ $("modalCard").innerHTML=`
+  <button class="m-close" onclick="closeModal()">✕</button>
+  <div style="display:flex;align-items:center;justify-content:center;background:#0c0906;min-height:60vh">
+   <img src="${g.image_url}" style="max-width:100%;max-height:85vh;object-fit:contain"/>
+  </div>`;
+ $("modal").classList.add("open");document.body.style.overflow="hidden";
+}
+function renderGalleryAdmin(){
+ $("galleryAdminList").innerHTML=gallery.map(g=>`
+  <div class="m-item" style="cursor:default">
+   <img src="${g.image_url}"/>
+   <div class="cap" style="opacity:1;background:linear-gradient(0deg,rgba(0,0,0,.85),transparent)">
+    ${g.caption?g.caption+"<br/>":""}
+    <button class="mini del" style="margin-top:6px" onclick="delGalleryPhoto('${g.id}')">Delete</button>
+   </div>
+  </div>`).join("") || `<p style="color:var(--grey)">No gallery photos yet — upload your first ones.</p>`;
+}
+async function onGalleryFilesChosen(input){
+ if(!input.files||!input.files.length)return;
+ const caption=$("g-caption").value.trim();
+ for(const file of input.files){
+  const path=`${Date.now()}-${Math.random().toString(36).slice(2,8)}-${file.name.replace(/\s+/g,"_")}`;
+  const {error:upErr}=await sb.storage.from("gallery-photos").upload(path,file,{cacheControl:"3600",upsert:false});
+  if(upErr){showToast("Upload failed for "+file.name+": "+upErr.message,"error");continue;}
+  const {data}=sb.storage.from("gallery-photos").getPublicUrl(path);
+  const {error}=await sb.from("gallery").insert({image_url:data.publicUrl,caption});
+  if(error){showToast("Could not save photo: "+error.message,"error");}
+ }
+ input.value="";
+ await loadGallery();renderGalleryAdmin();renderGalleryPublic();
+ showToast("Gallery updated ✔");
+}
+async function delGalleryPhoto(id){
+ if(!confirm("Delete this photo?"))return;
+ const {error}=await sb.from("gallery").delete().eq("id",id);
+ if(error){showToast("Could not delete: "+error.message,"error");return;}
+ await loadGallery();renderGalleryAdmin();renderGalleryPublic();
+}
+
 /* ============ OFFERS ============ */
 let oEditingId=null,oImageUrl="";
 async function onOfferFileChosen(input){
@@ -1603,7 +1766,7 @@ function renderTestiAdmin(){
 async function saveTesti(){
  const name=$("t-name").value.trim(),text=$("t-text").value.trim();
  if(!name||!text){showToast("Please add the customer's name and their words.","error");return;}
- const row={name,bike:$("t-bike").value.trim()||"Shams Motors",stars:+$("t-stars").value,body:text};
+ const row={name,bike:$("t-bike").value.trim()||"Shams Motors",stars:+$("t-stars").value,body:text,photo_url:$("t-photo").value.trim()};
  let error;
  if(tEditingId){({error}=await sb.from("testimonials").update(row).eq("id",tEditingId));}
  else{({error}=await sb.from("testimonials").insert(row));}
@@ -1612,11 +1775,11 @@ async function saveTesti(){
 }
 function editTesti(id){
  const t=testis.find(x=>x.id===id);if(!t)return;tEditingId=id;
- $("t-name").value=t.name;$("t-bike").value=t.bike;$("t-stars").value=t.stars;$("t-text").value=t.text;
+ $("t-name").value=t.name;$("t-bike").value=t.bike;$("t-stars").value=t.stars;$("t-text").value=t.text;$("t-photo").value=t.photo||"";
  $("tFormTitle").textContent="Edit testimonial";$("tCancelEdit").hidden=false;
 }
 function resetTForm(){
- tEditingId=null;["t-name","t-bike","t-text"].forEach(i=>$(i).value="");$("t-stars").value="5";
+ tEditingId=null;["t-name","t-bike","t-text","t-photo"].forEach(i=>$(i).value="");$("t-stars").value="5";
  $("tFormTitle").textContent="Add testimonial";$("tCancelEdit").hidden=true;
 }
 async function delTesti(id){
@@ -1629,11 +1792,15 @@ async function delTesti(id){
 function fillSettingsForm(){
  $("s-phone").value=settings.phone;$("s-wa").value=settings.wa;$("s-address").value=settings.address;
  $("s-hours").value=settings.hours;$("s-owner").value=settings.owner;$("s-maps").value=settings.mapsEmbed||"";
+ $("s-grate").value=settings.gRate||"";$("s-gcount").value=settings.gCount||"";$("s-gurl").value=settings.gUrl||"";
+ $("s-insta").value=settings.instagram||"";
 }
 async function saveSettings(){
  const row={phone:$("s-phone").value.trim(),wa:$("s-wa").value.replace(/\D/g,""),
   address:$("s-address").value.trim(),hours:$("s-hours").value.trim(),owner:$("s-owner").value.trim(),
-  maps_embed:$("s-maps").value.trim()};
+  maps_embed:$("s-maps").value.trim(),
+  google_rating:$("s-grate").value.trim(),google_review_count:$("s-gcount").value.trim(),
+  google_reviews_url:$("s-gurl").value.trim(),instagram_url:$("s-insta").value.trim()};
  const {error}=await sb.from("settings").update(row).eq("id",1);
  if(error){showToast("Could not save settings: "+error.message,"error");return;}
  await loadSettings();applySettings();calcEMI();
